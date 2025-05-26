@@ -11,7 +11,7 @@ const distributionRoutes = require("./routes/Distribution");
 
 const app = express();
 
-// ✅ CORS में सभी जरूरी origins allow किए
+
 app.use(
   cors({
     origin: ["http://localhost:3000", "http://localhost:5173"], // React dev server दोनों allow
