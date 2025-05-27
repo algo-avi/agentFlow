@@ -30,7 +30,7 @@ const DistributionView = () => {
 
   const fetchDistributions = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/distributions")
+      const response = await axios.get("https://agentflow-backend-pjgp.onrender.com/api/distributions")
       setDistributions(response.data.distributions)
     } catch (error) {
       setError(error.response?.data?.message || "Failed to fetch distributions")
