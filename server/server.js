@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 require("dotenv").config();
 
 const authRoutes = require("./routes/auth");
@@ -11,16 +12,30 @@ const distributionRoutes = require("./routes/Distribution");
 
 const app = express();
 
-
+// CORS setup
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:5173"], // React dev server दोनों allow
+    origin: ["http://localhost:3000", "http://localhost:5173"], // Allow React dev servers
     credentials: true,
   })
 );
 
 app.use(express.json());
 app.use(cookieParser());
+
+// Serve static files with correct MIME types
+app.use(express.static(path.join(__dirname, "public"), {
+    setHeaders: (res, filePath) => {
+        if (filePath.endsWith(".css")) {
+            res.setHeader("Content-Type", "text/css");
+        } else if (filePath.endsWith(".js")) {
+            res.setHeader("Content-Type", "application/javascript");
+        }
+    }
+}));
+
+// If your frontend build is inside `client/dist`, serve it correctly
+app.use(express.static(path.join(__dirname, "client/dist")));
 
 // Routes
 app.use("/api/auth", authRoutes);
