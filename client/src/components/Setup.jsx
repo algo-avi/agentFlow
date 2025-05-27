@@ -48,7 +48,7 @@ const Setup = () => {
 
     try {
       // ✅ Backend का सही URL इस्तेमाल कर रहे हैं
-      const response = await axios.post("http://localhost:5000/api/auth/setup", formData);
+      const response = await axios.post("https://agentflow-backend-pjgp.onrender.com/api/auth/setup", formData);
 
       alert("Admin account created successfully! You can now login.");
       navigate("/login");
