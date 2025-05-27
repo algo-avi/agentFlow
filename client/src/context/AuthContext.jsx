@@ -17,8 +17,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Backend API base URL और credentials सेट करना
-  axios.defaults.baseURL = "http://localhost:5000/api/auth"; // ✅ Backend API का सही URL
+  // ✅ Backend API base URL credentials 
+  axios.defaults.baseURL = "https://agentflow-backend-pjgp.onrender.com/api/auth"; // ✅ Backend API 
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
       if (response.status === 200) {
         console.log("✅ Login successful!");
-        await checkAuthStatus(); // ✅ Auth स्टेट को रिफ्रेश कर रहा हूँ
+        await checkAuthStatus(); // ✅ Auth 
         return { success: true };
       } else {
         throw new Error("Unexpected response status");
