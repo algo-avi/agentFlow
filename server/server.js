@@ -15,7 +15,7 @@ const app = express();
 // CORS setup
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:5173"], // Allow React dev servers
+    origin: ["https://agentflow-ku8i.onrender.com", "http://localhost:5173"], // Allow React dev servers
     credentials: true,
   })
 );
