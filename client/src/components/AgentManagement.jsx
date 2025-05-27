@@ -63,7 +63,7 @@ const AgentManagement = () => {
   const fetchAgents = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/agents");
+      const response = await axios.get("https://agentflow-backend-pjgp.onrender.com/api/agents");
       setAgents(response.data.agents);
     } catch (error) {
       setError(error.response?.data?.message || "Failed to fetch agents");
@@ -78,13 +78,13 @@ const AgentManagement = () => {
     setError("");
     setSuccess("");
     try {
-      // ✅ सही API URL इस्तेमाल कर रहे हैं
-      await axios.post("http://localhost:5000/api/agents", formData);
+      // ✅  API URL 
+      await axios.post("https://agentflow-backend-pjgp.onrender.com/api/agents", formData);
 
       setSuccess("Agent created successfully!");
       setFormData({ name: "", email: "", mobile: "", countryCode: "+1", password: "" });
       setShowModal(false);
-      fetchAgents(); // ✅ Agent List को रिफ्रेश करो
+      fetchAgents(); // ✅ Agent List 
     } catch (error) {
       setError(error.response?.data?.message || "Failed to create agent");
     } finally {
@@ -95,7 +95,7 @@ const AgentManagement = () => {
   const handleDelete = async (agentId) => {
     if (!window.confirm("Are you sure you want to delete this agent?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/agents/${agentId}`);
+      await axios.delete(`https://agentflow-backend-pjgp.onrender.com/api/agents/${agentId}`);
       setSuccess("Agent deleted successfully!");
       fetchAgents();
     } catch (error) {
