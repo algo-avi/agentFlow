@@ -78,13 +78,13 @@ const AgentManagement = () => {
     setError("");
     setSuccess("");
     try {
-      // ✅  API URL 
-      await axios.post("https://agentflow-backend-pjgp.onrender.com/api/agents", formData);
+      // ✅ सही API URL इस्तेमाल कर रहे हैं
+      await axios.post("http://localhost:5000/api/agents", formData);
 
       setSuccess("Agent created successfully!");
       setFormData({ name: "", email: "", mobile: "", countryCode: "+1", password: "" });
       setShowModal(false);
-      fetchAgents(); // ✅ Agent List 
+      fetchAgents(); // ✅ Agent List को रिफ्रेश करो
     } catch (error) {
       setError(error.response?.data?.message || "Failed to create agent");
     } finally {
